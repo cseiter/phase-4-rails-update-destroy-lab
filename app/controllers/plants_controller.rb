@@ -19,9 +19,9 @@ class PlantsController < ApplicationController
   end
 
   def update
-    plant = Plant.find_by(id params[:id])
+    plant = Plant.find_by(id: params[:id])
     if plant
-      plant.update(:is_in_stock)
+      plant.update(plant_params)
       render json: plant
     else
       render json: {error: "Plant not found" }, status: not_found
